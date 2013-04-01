@@ -1,37 +1,28 @@
 
 
 $('.js-slideshow').each(function() {
-	var $context = $(this),
-		isActiveCssClass = 'is-active';
+	var $context = $(this);
 
 	var options = {
-		// jQuery Selectors
-		$slider: $('.js-slideshow-slider-wrapper', $context),
+		$container: $('.js-slideshow-slider-wrapper', $context),
 		$items: $('.js-slideshow-slider-wrapper > *', $context),
-
-		// Auto Play
-		autoPlay: 'no',
+		autoPlay: 'once',
 		autoPlayTimer: 1000,
-
-		// Slide Effects
-		itemsToSlide: 1,
-		fxDuration: 800,
-		fxEasing: 'easeOutQuint',
-
+		itemsPerGroup: 2,
 		debug: true
 	};
 
-	// Initialize the slideshow
-	$context.slideshow('init', options);
+	// Initialize the Slidr
+	$context.slidr(options);
 
-	// Pause the slideshow on mouse hover
+	// Pause the Slidr on mouse hover
 	if ($context.data('pause-on-mousehover')) {
-		$context.find('.js-slideshow-mask').on({
+		options.$container.on({
 			mouseenter: function() {
-				$context.slideshow('stop');
+				$context.slidr().stop();
 			},
 			mouseleave: function() {
-				$context.slideshow('play');
+				$context.slidr().play();
 			}
 		});
 	}
@@ -40,38 +31,27 @@ $('.js-slideshow').each(function() {
 		// disable browser scrolling
 		ev.gesture.preventDefault();
 
-		if (ev.type == 'dragright' || ev.type == 'dragleft') {
-			$context.slideshow('stop');
-			var left = options.$slider.data('currentLeft') + ev.gesture.deltaX;
-
-			//if(Modernizr.csstransforms3d) {
-			//	options.$slider.css("transform", "translate3d("+ left +"px,0,0) scale3d(1,1,1)");
-			//}
-			//else
-			//if(Modernizr.csstransforms) {
-			//	options.$slider.css("transform", "translate("+ left +"px,0)");
-			//}
-			//else {
-				options.$slider.css('left', left);
-			//}
+		if (options.$container.data('sliding') != true && (ev.type == 'dragright' || ev.type == 'dragleft')) {
+			$context.slidr().stop();
+			var left = options.$container.data('currentLeft') + ev.gesture.deltaX;
+			$context.slidr().setContainerOffset({left: left});
 		}
 
-		if (ev.type == 'swipeleft' && $context.data('currentView') < $context.data('maxView')) {
-			$context.slideshow('next');
+		if (ev.type == 'swipeleft' && $context.data('currentGroupIndex') < $context.data('lastGroupIndex')) {
+			$context.slidr().next(true);
 			ev.gesture.stopDetect();
 		}
 
-		if (ev.type == 'swiperight' && $context.data('currentView') > 0) {
-			$context.slideshow('prev');
+		if (ev.type == 'swiperight' && $context.data('currentGroupIndex') > 0) {
+			$context.slidr().prev(true);
 			ev.gesture.stopDetect();
 		}
 
 		if (ev.type == 'release' && ev.gesture.deltaX != 0) {
-			$context.slideshow('closest');
+			$context.slidr().closest(true);
 		}
 	}
 
-	$context.hammer({ drag_lock_to_axis: true })
-		.on("release swipeleft swiperight dragleft dragright", handleHammer);
+	options.$container.hammer({ drag_lock_to_axis: true }).on("release swipeleft swiperight dragleft dragright", handleHammer);
 
 });

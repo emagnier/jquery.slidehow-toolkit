@@ -4,11 +4,13 @@
     <list default="true" id="d7741273-b396-45e0-8092-5194ba1acbd6" name="Default" comment="" />
     <ignored path="slideshow.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364604299497" ignored="false" />
+    <file path="/Dummy.txt" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364794274960" ignored="false" />
     <file path="/carousel.html" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364607071431" ignored="false" />
-    <file path="/init.js" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364624109752" ignored="false" />
-    <file path="/jquery.slideshow.js" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364624360161" ignored="false" />
-    <file path="/index.html" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364622327949" ignored="false" />
+    <file path="/init.js" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364705025793" ignored="false" />
+    <file path="/jquery.slideshow.js" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364678183699" ignored="false" />
+    <file path="/index.html" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364701285611" ignored="false" />
+    <file path="/jquery.slideshow2.js" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364679728932" ignored="false" />
+    <file path="/jquery.slidr.js" changelist="d7741273-b396-45e0-8092-5194ba1acbd6" time="1364793811287" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,37 +30,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="32" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="init.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="0" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="47" selection-start="2004" selection-end="2004" vertical-scroll-proportion="0.6929032">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery.slideshow.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libs/jquery.slideshow.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="53" selection-start="2567" selection-end="2567" vertical-scroll-proportion="0.0">
+            <state line="11" column="24" selection-start="296" selection-end="296" vertical-scroll-proportion="0.22639225">
               <folding />
             </state>
           </provider>
@@ -76,17 +51,19 @@
       <list>
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/carousel.html" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/init.js" />
+        <option value="$PROJECT_DIR$/libs/jquery.slideshow2.js" />
         <option value="$PROJECT_DIR$/libs/jquery.slideshow.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/libs/jquery.slidr.js" />
+        <option value="$PROJECT_DIR$/init.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
-    <option name="y" value="16" />
+    <option name="y" value="-9" />
     <option name="width" value="1938" />
-    <option name="height" value="1003" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -114,6 +91,21 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="slideshow">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -134,21 +126,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="slideshow">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -159,6 +136,11 @@
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Workspace\GitHub\slideshow\src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
@@ -205,24 +187,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="16" width="1938" height="1003" extended-state="6" />
-    <editor active="false" />
+    <frame x="-9" y="-9" width="1938" height="1028" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.255603" sideWeight="0.67027676" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2551397" sideWeight="0.6709602" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -284,34 +266,51 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="9" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="32" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="22" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.0">
+        <state line="36" column="41" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.slideshow.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="34" selection-start="2391" selection-end="2391" vertical-scroll-proportion="0.0">
+        <state line="19" column="75" selection-start="978" selection-end="978" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/src/jquery.slidr.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="32" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="373" column="75" selection-start="10027" selection-end="10027" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#166#458#0" expanded="false" />
+            <element signature="e#527#1392#0" expanded="false" />
+            <element signature="e#1872#1949#0" expanded="false" />
+            <element signature="e#2080#2341#0" expanded="false" />
+            <element signature="e#2433#2586#0" expanded="false" />
+            <element signature="e#2685#3223#0" expanded="false" />
+            <element signature="e#3286#3375#0" expanded="false" />
+            <element signature="e#3425#3496#0" expanded="false" />
+            <element signature="e#3520#5252#0" expanded="false" />
+            <element signature="e#5277#6197#0" expanded="false" />
+            <element signature="e#6241#6676#0" expanded="false" />
+            <element signature="e#6724#7121#0" expanded="false" />
+            <element signature="e#7172#7595#0" expanded="false" />
+            <element signature="e#7678#9512#0" expanded="false" />
+            <element signature="e#9561#10170#0" expanded="false" />
+            <element signature="e#10206#10379#0" expanded="false" />
+            <element signature="e#10436#10696#0" expanded="false" />
+            <element signature="e#10749#11009#0" expanded="false" />
+            <element signature="e#11064#11236#0" expanded="false" />
+            <element signature="e#11289#11473#0" expanded="false" />
+            <element signature="e#11532#12473#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -322,16 +321,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.slideshow.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="47" selection-start="2004" selection-end="2004" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/jquery.slideshow.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="96" column="53" selection-start="2567" selection-end="2567" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="32" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="22" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/jquery.slideshow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="34" selection-start="2391" selection-end="2391" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="32" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/jquery.slideshow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="41" selection-start="33" selection-end="33" vertical-scroll-proportion="-1.5185186">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jquery.slidr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="38" selection-end="38" vertical-scroll-proportion="0.08232445">
+          <folding>
+            <element signature="e#166#458#0" expanded="false" />
+            <element signature="e#527#1392#0" expanded="false" />
+            <element signature="e#1872#1949#0" expanded="false" />
+            <element signature="e#2080#2341#0" expanded="false" />
+            <element signature="e#2433#2586#0" expanded="false" />
+            <element signature="e#2685#3223#0" expanded="false" />
+            <element signature="e#3286#3375#0" expanded="false" />
+            <element signature="e#3425#3496#0" expanded="false" />
+            <element signature="e#3520#5252#0" expanded="false" />
+            <element signature="e#5277#6197#0" expanded="false" />
+            <element signature="e#6241#6676#0" expanded="false" />
+            <element signature="e#6724#7121#0" expanded="false" />
+            <element signature="e#7172#7595#0" expanded="false" />
+            <element signature="e#7678#9512#0" expanded="false" />
+            <element signature="e#9561#10170#0" expanded="false" />
+            <element signature="e#10206#10379#0" expanded="false" />
+            <element signature="e#10436#10696#0" expanded="false" />
+            <element signature="e#10749#11009#0" expanded="false" />
+            <element signature="e#11064#11236#0" expanded="false" />
+            <element signature="e#11289#11473#0" expanded="false" />
+            <element signature="e#11532#12473#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="47" selection-start="2004" selection-end="2004" vertical-scroll-proportion="0.6929032">
+        <state line="19" column="75" selection-start="978" selection-end="978" vertical-scroll-proportion="-0.8075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="296" selection-end="296" vertical-scroll-proportion="0.22639225">
           <folding />
         </state>
       </provider>

@@ -14,10 +14,10 @@
             position: relative;
         }
 
-        .mod-slideshow { position: relative; font-size: 0; background: silver; width: 600px; height: 360px;}
+        .mod-slideshow { position: relative; font-size: 0; background: silver; width: 600px; height: 360px; margin-bottom: 30px;}
         .mod-slideshow ._s-mask { width: 100%; height: 360px; margin: 0 auto; white-space: nowrap; overflow: hidden; position: relative; padding: 0; }
         .mod-slideshow ._s-mask > div { -webkit-perspective: 1000; perspective: 1000; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-        .mod-slideshow ._s-mask > div > * { display: inline-block; width: 600px; height: 360px; font-size: 12px; }
+        .mod-slideshow ._s-mask > div > * { display: inline-block; width: 300px; height: 360px; font-size: 12px; }
 
         .mod-slideshow {
             -webkit-backface-visibility: hidden;
@@ -63,7 +63,18 @@
         .mod-slideshow .pane4 { background: #cd74e6; }
         .mod-slideshow .pane5 { background: #9fe1e7; }
 
+        .mod-action {margin-top:20px;}
+	    .mod-action a {display:inline-block; padding:8px; font-size:16px; }
+
     </style>
+
+	<script src="assets/modernizr.js"></script>
+	<script src="assets/jquery.js"></script>
+	<script src="assets/jquery.slideshow.js"></script>
+	<script src="src/jquery.slidr.js"></script>
+	<!--script src="assets/jquery.animateEnhanced.js"></script-->
+	<script src="assets/jquery.easing.js"></script>
+	<script src="assets/jquery.hammer.js"></script>
 </head>
 
 <body>
@@ -80,15 +91,20 @@
 
 			</div>
 		</div>
+
+		<ul class="mod-action">
+			<li><a href="#" onclick="$('.js-slideshow').slidr().play()" >Play</a></li>
+			<li><a href="#" onclick="$('.js-slideshow').slidr().stop()" >Stop</a></li>
+			<li><a href="#" onclick="$('.js-slideshow').slidr().first()" >First</a></li>
+			<li><a href="#" onclick="$('.js-slideshow').slidr().prev()" >Previous</a></li>
+			<li><a href="#" onclick="$('.js-slideshow').slidr().next()" >Next</a></li>
+			<li><a href="#" onclick="$('.js-slideshow').slidr().last()" >Last</a></li>
+			<li><a href="#" onclick="$('.js-slideshow').slidr().closest()" >Closest</a></li>
+			<li><a href="#" onclick="$('.js-slideshow').slidr().reset()" >Reset</a></li>
+		</ul>
+
 	</div>
 
-
-	<script src="libs/modernizr.js"></script>
-	<script src="libs/jquery.js"></script>
-    <script src="libs/jquery.slideshow.js"></script>
-	<script src="libs/jquery.animateEnhanced.js"></script>
-	<script src="libs/jquery.easing.js"></script>
-	<script src="libs/jquery.hammer.js"></script>
 	<script src="init.js"></script>
 
 </body>
