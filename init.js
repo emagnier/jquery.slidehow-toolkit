@@ -12,10 +12,10 @@ $('.js-slideshow').each(function() {
 		debug: true
 	};
 
-	// Initialize the Slidr
+	// Initialize the slideshow
 	$context.slidr(options);
 
-	// Pause the Slidr on mouse hover
+	// Pause the slideshow on mouse hover
 	if ($context.data('pause-on-mousehover')) {
 		options.$container.on({
 			mouseenter: function() {
