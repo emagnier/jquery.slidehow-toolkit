@@ -3,9 +3,9 @@
  * © Etienne Magnier
  */
 
-(function($) {
+(function ($) {
 	jQuery.fn.extend({
-		slidr: function(options) {
+		slidr: function (options) {
 			"use strict";
 
 			// Init errors messages
@@ -23,9 +23,10 @@
 					$container: $(),
 					$items: $(),
 
-					// Optional Buttons
+					// Optional Buttons & Pager
 					$prevBtn: $(),
 					$nextBtn: $(),
+					$pagerBtns: $(),
 					isActiveCssClass: 'is-active',
 
 					// Auto Play
@@ -44,28 +45,29 @@
 					alternateAnimateCssClass: '',
 
 					// Custom Events
-					onInitialized: function (objContext) {},
-					onBeforeSliding: function (objContext) {},
-					onAlternateBeforeSliding: function (objContext) {},
-					onCompleteSliding: function (objContext) {},
-					onAlternateCompleteSliding: function (objContext) {},
+					onInitialized: function (objContext) { },
+					onBeforeSliding: function (objContext) { },
+					onAlternateBeforeSliding: function (objContext) { },
+					onCompleteSliding: function (objContext) { },
+					onAlternateCompleteSliding: function (objContext) { },
 
 					// Debug Mode
 					debug: false
 				},
 				opt,
-				initialized = typeof $context.data('SlidrInstance') == 'object';
+				initialized = typeof $context.data('SlidrInstance') === 'object';
+
 
 			// Init opt object
-			if (typeof options == 'object') {
-				if (typeof eval($context.data('SlidrOptions')) == 'object' && initialized) {
-					opt = $.extend({}, eval($context.data('SlidrOptions')), options);
+			if (typeof options === 'object') {
+				if (typeof $context.data('SlidrOptions') === 'object' && initialized) {
+					opt = $.extend({}, $context.data('SlidrOptions'), options);
 				} else {
 					opt = $.extend({}, defaults, options);
 				}
 				$context.data('SlidrOptions', opt);
-			} else if (typeof eval($context.data('SlidrOptions')) == 'object' && initialized) {
-				opt = $.extend({}, defaults, eval($context.data('SlidrOptions')));
+			} else if (typeof $context.data('SlidrOptions') === 'object' && initialized) {
+				opt = $.extend({}, defaults, $context.data('SlidrOptions'));
 			} else {
 				opt = defaults;
 			}
@@ -88,18 +90,31 @@
 				// Return Current Context Informations
 				getContextInfo: function () {
 					return {
-						currentGroupIndex: parseInt($context.data('currentGroupIndex')),
+						currentGroupIndex: parseInt($context.data('currentGroupIndex'), 10),
 						lastGroupIndex: lastGroupIndex,
 						opt: opt
 					};
 				},
+				
 
-				// Set an active CssClass on the buttons
-				checkActiveButtons: function(isActiveCssClass) {
+				/* Change the option itemsPerGroup
+				 * @param {Integer} newItemsPerGroup New number to set
+				 * @return {Void}
+				*/
+				changeItemsPerGroup: function (newItemsPerGroup) {
+					opt.itemsPerGroup = newItemsPerGroup;
+				},
+
+
+				/* Set an active CssClass on the buttons
+				 * @param {String} isActiveCssClass Active css class name
+				 * @return {Object} $context Slidr context
+				*/
+				checkActiveButtons: function (isActiveCssClass) {
 					if (initialized) {
 						var currentGroupIndex = fn.getContextInfo().currentGroupIndex;
 
-						if (currentGroupIndex == 0) {
+						if (currentGroupIndex === 0) {
 							opt.$prevBtn.removeClass(isActiveCssClass);
 						} else {
 							opt.$prevBtn.addClass(isActiveCssClass);
@@ -111,6 +126,10 @@
 							opt.$nextBtn.addClass(isActiveCssClass);
 						}
 
+						var $previousPagerBtn = opt.$pagerBtns.not($(opt.$pagerBtns[currentGroupIndex])).filter('.' + isActiveCssClass);
+						$previousPagerBtn.removeClass(isActiveCssClass);
+						$(opt.$pagerBtns[currentGroupIndex]).addClass(isActiveCssClass);
+
 					} else {
 						log(errorMsg.actionNotAvailable, 'checkActiveButtons');
 					}
@@ -118,27 +137,27 @@
 					return $context;
 				},
 
-				groupIndexToFirstItemIndexInGroup: function(groupIndex) {
+				groupIndexToFirstItemIndexInGroup: function (groupIndex) {
 					return ((groupIndex + 1) * opt.itemsPerGroup - (opt.itemsPerGroup - 1)) - 1;
 				},
 
-				itemIndexToGroupIndex: function(itemIndex) {
+				itemIndexToGroupIndex: function (itemIndex) {
 					return Math.ceil((itemIndex + 1) / opt.itemsPerGroup) - 1;
 				},
 
-				init: function() {
+				init: function () {
 					if (!initialized) {
-						initialized = true;
 
 						$context.data('currentGroupIndex', 0);
 						$context.data('lastGroupIndex', lastGroupIndex);
 						$context.data('autoPlayState', 'disabled');
-
+						
 						// Don't bind events and mechanic if it's not necessary
 						if (opt.$items.length > opt.itemsPerGroup) {
+							initialized = true;
 
-							var baseTop = isNaN(parseFloat(opt.$container.css('top'))) ? 0 : opt.$container.css('top'),
-								baseLeft = isNaN(parseFloat(opt.$container.css('left'))) ? 0 : opt.$container.css('left');
+							var baseTop = opt.$container.position().top,
+								baseLeft = opt.$container.position().left;
 
 							opt.$container.css({
 								position: 'absolute',
@@ -146,12 +165,14 @@
 								left: baseLeft
 							});
 
-							if (opt.$container.data('defaultLeft') == undefined || opt.$container.data('defaultTop') == undefined) {
+							if (opt.$container.data('defaultLeft') === undefined || opt.$container.data('defaultTop') === undefined) {
 								opt.$container.data('defaultLeft', baseLeft);
 								opt.$container.data('currentLeft', baseLeft);
 								opt.$container.data('defaultTop', baseTop);
 								opt.$container.data('currentTop', baseTop);
 							}
+
+							opt.$container.data('sliding', false);
 
 							// AutoPlay feature
 							if (opt.autoPlay != 'no' && opt.autoPlayTimer > 0) {
@@ -160,17 +181,22 @@
 							}
 
 							// Back Button
-							opt.$prevBtn.on('click.slidr', function(e) {
+							opt.$prevBtn.on('click.slidr', function (e) {
 								e.preventDefault();
-								fn.stop().goto(fn.getContextInfo().currentGroupIndex - 1);
+								fn.stop();
+								fn.gotoGroup(fn.getContextInfo().currentGroupIndex - 1);
 							});
 
 							// Next Button
 							opt.$nextBtn.addClass(opt.isActiveCssClass);
-							opt.$nextBtn.on('click.slidr', function(e) {
+							opt.$nextBtn.on('click.slidr', function (e) {
 								e.preventDefault();
-								fn.stop().goto(fn.getContextInfo().currentGroupIndex + 1);
+								fn.stop();
+								fn.gotoGroup(fn.getContextInfo().currentGroupIndex + 1);
 							});
+
+							// Pager Buttons
+							this.refreshPageButtons();
 
 							// Custom event
 							opt.onInitialized(fn.getContextInfo());
@@ -182,20 +208,39 @@
 
 					return $context;
 				},
+				
+				refreshPageButtons: function () {
+					
+					// Set pager buttons
+					opt.$pagerBtns = $('.js-slidr-pager-btns', $context);
 
-				reset: function() {
+					// Set active class
+					opt.$pagerBtns.eq($context.data('currentGroupIndex')).addClass(opt.isActiveCssClass);
+					
+					// Bind events
+					for (var i = 0; i < opt.$pagerBtns.length; i++) {
+						$(opt.$pagerBtns[i]).data('itemIndex', i);
+					}
+					opt.$pagerBtns.on('click.slidr', function (e) {
+						e.preventDefault();
+						fn.stop();
+						fn.gotoGroup($(this).data('itemIndex'));
+					});
+				},
+
+				reset: function () {
 					if (initialized) {
 
 						fn.stop();
 						$context.data('currentGroupIndex', 0);
 
-						var left = opt.$container.data('defaultLeft'),
-							top = opt.$container.data('defaultTop');
+						var offset = {
+							left: opt.$container.data('defaultLeft'),
+							top: opt.$container.data('defaultTop')
+						};
 
-						opt.$container.stop().css({
-							'left': left,
-							'top': top
-						});
+						opt.$container.stop().css(offset);
+						fn.animate(offset, 0, 'linear');
 
 						$context.removeData('SlidrInstance');
 						fn.checkActiveButtons(opt.isActiveCssClass);
@@ -203,6 +248,7 @@
 						// Remove Custom Class and Events on Buttons
 						opt.$prevBtn.off('.slidr').removeClass(opt.isActiveCssClass);
 						opt.$nextBtn.off('.slidr').removeClass(opt.isActiveCssClass);
+						opt.$pagerBtns.off('.slidr').removeClass(opt.isActiveCssClass).removeData('itemIndex');
 
 						// Create an instance for this slideshow
 						$context.data('SlidrInstance', fn);
@@ -223,15 +269,15 @@
 					return $context;
 				},
 
-				setContainerOffset: function(offset) {
+				setContainerOffset: function (offset) {
 					if (initialized) {
 						offset = offset || {};
 
-						if (typeof offset.top == undefined) {
+						if (typeof offset.top == 'undefined') {
 							offset.top = opt.$container.position().top;
 						}
 
-						if (typeof offset.left == undefined) {
+						if (typeof offset.left == 'undefined') {
 							offset.left = opt.$container.position().left;
 						}
 
@@ -245,24 +291,24 @@
 					return $context;
 				},
 
-				getContainerOffset: function(groupIndex) {
+				getContainerOffset: function (groupIndex) {
 					groupIndex = Math.min(groupIndex, lastGroupIndex);
 					groupIndex = Math.max(groupIndex, 0);
 					var itemIndex = fn.groupIndexToFirstItemIndexInGroup(groupIndex);
 
 					return {
-						top: parseInt(opt.$container.data('defaultTop')) - $(opt.$items[itemIndex]).position().top,
-						left: parseInt(opt.$container.data('defaultLeft')) - $(opt.$items[itemIndex]).position().left
-					}
+						top: parseInt(opt.$container.data('defaultTop'), 10) - $(opt.$items[itemIndex]).position().top,
+						left: parseInt(opt.$container.data('defaultLeft'), 10) - $(opt.$items[itemIndex]).position().left
+					};
 				},
 
-				animate: function(offset, duration, easing) {
+				animate: function (offset, duration, easing) {
 					if (initialized) {
-						if (typeof duration == undefined) {
+						if (typeof duration == 'undefined') {
 							duration = opt.fxDuration;
 						}
 
-						if (typeof easing == undefined) {
+						if (typeof easing == 'undefined') {
 							easing = opt.fxEasing;
 						}
 
@@ -278,9 +324,9 @@
 				},
 
 				// Go to a specific slide group
-				goto: function(groupIndex, fxAlternate) {
-					if (initialized ) {
-
+				gotoGroup: function (groupIndex, fxAlternate) {
+					if (initialized) {
+						
 						if (groupIndex >= 0 && groupIndex <= lastGroupIndex) {
 
 							fxAlternate = fxAlternate || false;
@@ -291,12 +337,12 @@
 								fxEasing = opt.fxAlternateEasing;
 								fxDebounce = opt.fxAlternateDebounce;
 							} else {
+								fxDuration = opt.fxDuration;
 								fxEasing = opt.fxEasing;
 								fxDebounce = opt.fxDebounce;
-								opt.$container.addClass(opt.animateCssClass);
 							}
 
-							if (opt.$container.data('sliding') != true || !fxDebounce) {
+							if (opt.$container.data('sliding') !== true || !fxDebounce) {
 
 								if (fxAlternate) {
 									// Custom event
@@ -307,7 +353,7 @@
 									// Custom event
 									opt.onBeforeSliding(fn.getContextInfo());
 
-									fxDuration = opt.fxDuration;
+									opt.$container.addClass(opt.animateCssClass);
 								}
 
 								$context.data('currentGroupIndex', groupIndex);
@@ -317,7 +363,7 @@
 								opt.$container.data('sliding', true);
 								fn.animate(offset, fxDuration, fxEasing);
 
-								setTimeout((function() {
+								setTimeout(function () {
 									opt.$container.data('currentTop', offset.top);
 									opt.$container.data('currentLeft', offset.left);
 
@@ -334,35 +380,35 @@
 									}
 
 									opt.$container.data('sliding', false);
-								}), fxDuration);
+								}, fxDuration);
 
 							}
 						}
 
 					} else {
-						log(errorMsg.actionNotAvailable, 'goto');
+						log(errorMsg.actionNotAvailable, 'gotoGroup');
 					}
 
 					return $context;
 				},
 
 				// Play
-				play: function(autoPlayTimer) {
+				play: function (autoPlayTimer) {
 					if (initialized) {
 
 						if ($context.data('autoPlayState') == 'active') {
 
-							$context.data('intervalFn', setInterval(function() {
+							$context.data('intervalFn', setInterval(function () {
 								var currentGroupIndex = fn.getContextInfo().currentGroupIndex;
 
 								if (currentGroupIndex < lastGroupIndex) {
-									fn.goto(currentGroupIndex + 1);
+									fn.gotoGroup(currentGroupIndex + 1);
 								} else {
 									if (opt.autoPlay == 'once') {
 										$context.data('autoPlayState', 'done');
 										fn.stop();
 									}
-									fn.goto(0);
+									fn.gotoGroup(0);
 								}
 							}, autoPlayTimer));
 
@@ -375,7 +421,7 @@
 				},
 
 				// Stop
-				stop: function() {
+				stop: function () {
 					if (initialized) {
 						clearInterval($context.data('intervalFn'));
 					} else {
@@ -386,11 +432,11 @@
 				},
 
 				// Go to Previous
-				prev: function(fxAlternate) {
+				prev: function (fxAlternate) {
 					if (initialized) {
 						var currentGroupIndex = fn.getContextInfo().currentGroupIndex;
 						fn.stop();
-						fn.goto(currentGroupIndex - 1, fxAlternate);
+						fn.gotoGroup(currentGroupIndex - 1, fxAlternate);
 					} else {
 						log(errorMsg.actionNotAvailable, 'prev');
 					}
@@ -399,11 +445,11 @@
 				},
 
 				// Go to Next
-				next: function(fxAlternate) {
+				next: function (fxAlternate) {
 					if (initialized) {
 						var currentGroupIndex = fn.getContextInfo().currentGroupIndex;
 						fn.stop();
-						fn.goto(currentGroupIndex + 1, fxAlternate);
+						fn.gotoGroup(currentGroupIndex + 1, fxAlternate);
 					} else {
 						log(errorMsg.actionNotAvailable, 'next');
 					}
@@ -412,10 +458,10 @@
 				},
 
 				// Go to First
-				first: function(fxAlternate) {
+				first: function (fxAlternate) {
 					if (initialized) {
 						fn.stop();
-						fn.goto(0, fxAlternate);
+						fn.gotoGroup(0, fxAlternate);
 					} else {
 						log(errorMsg.actionNotAvailable, 'first');
 					}
@@ -424,10 +470,10 @@
 				},
 
 				// Go to Last
-				last: function(fxAlternate) {
+				last: function (fxAlternate) {
 					if (initialized) {
 						fn.stop();
-						fn.goto(lastGroupIndex, fxAlternate);
+						fn.gotoGroup(lastGroupIndex, fxAlternate);
 					} else {
 						log(errorMsg.actionNotAvailable, 'last');
 					}
@@ -436,7 +482,7 @@
 				},
 
 				// Go to Closest
-				closest: function(fxAlternate) {
+				closest: function (fxAlternate) {
 					if (initialized) {
 
 						var containerX = opt.$container.parent().width() / 2,
@@ -444,7 +490,7 @@
 							closestItem = -1,
 							shortestDistance = 0;
 
-						opt.$items.each(function(i) {
+						opt.$items.each(function (i) {
 							var itemX = $(this).position().left + $(this).width() / 2 + opt.$container.position().left,
 								itemY = $(this).position().top + $(this).height() / 2 + opt.$container.position().top;
 
@@ -452,7 +498,7 @@
 							var dy = containerY - itemY;
 							var distance = Math.sqrt(dx * dx + dy * dy);
 
-							if (i == 0) {
+							if (i === 0) {
 								shortestDistance = distance;
 								closestItem = i;
 							}
@@ -463,7 +509,7 @@
 							}
 						});
 
-						fn.goto(fn.itemIndexToGroupIndex(closestItem), fxAlternate);
+						fn.gotoGroup(fn.itemIndexToGroupIndex(closestItem), fxAlternate);
 
 					} else {
 						log(errorMsg.actionNotAvailable, 'closest');
