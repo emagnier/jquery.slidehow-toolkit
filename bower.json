@@ -1,0 +1,15 @@
+{
+  "name": "slidr",
+  "version": "1.0.0",
+  "main": "./app/scripts/jquery.slidr.js",
+  "private": true,
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "jquery": "~1.10.2",
+    "jquery.animate-enhanced": "*",
+    "jquery-easing": "*",
+    "jquery-hammerjs": "*"
+  },
+  "devDependencies": {},
+  "license": "MIT (http://opensource.org/licenses/mit-license.php)"
+}

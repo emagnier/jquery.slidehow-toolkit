@@ -1,6 +1,5 @@
 /**
  * Slidr
- * © Etienne Magnier
  */
 
 (function ($) {

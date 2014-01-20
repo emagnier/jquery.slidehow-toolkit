@@ -1,0 +1,67 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>slidr</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+
+    </head>
+    <body>
+
+        <div class="js-slideshow mod-slideshow">
+            <div class="js-slideshow-mask _s-mask">
+                <div class="js-slideshow-slider-wrapper">
+
+                    <div class="pane1"><h2>Slide 1</h2></div>
+                    <div class="pane2"><h2>Slide 2</h2></div>
+                    <div class="pane3"><h2>Slide 3</h2></div>
+                    <div class="pane4"><h2>Slide 4</h2></div>
+                    <div class="pane5"><h2>Slide 5</h2></div>
+
+                </div>
+            </div>
+
+            <ul class="mod-action">
+                <li><a href="#" onclick="$('.js-slideshow').slidr().play()" >Play</a></li>
+                <li><a href="#" onclick="$('.js-slideshow').slidr().stop()" >Stop</a></li>
+                <li><a href="#" onclick="$('.js-slideshow').slidr().first()" >First</a></li>
+                <li><a href="#" onclick="$('.js-slideshow').slidr().prev()" >Previous</a></li>
+                <li><a href="#" onclick="$('.js-slideshow').slidr().next()" >Next</a></li>
+                <li><a href="#" onclick="$('.js-slideshow').slidr().last()" >Last</a></li>
+                <li><a href="#" onclick="$('.js-slideshow').slidr().closest()" >Closest</a></li>
+                <li><a href="#" onclick="$('.js-slideshow').slidr().reset()" >Reset</a></li>
+            </ul>
+
+        </div>
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="bower_components/jquery.animate-enhanced/jquery.animate-enhanced.min.js"></script>
+        <script src="bower_components/jquery-easing/jquery.easing.js"></script>
+        <script src="bower_components/jquery-easing/jquery.easing.min.js"></script>
+        <script src="bower_components/hammerjs/hammer.js"></script>
+        <script src="bower_components/jquery-hammerjs/jquery.hammer.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <script src="scripts/jquery.slidr.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
