@@ -4,3 +4,10 @@ dist
 .sass-cache
 app/bower_components
 test/bower_components
+
+# JetBrains IDEs
+.idea/
+.idea_modules/
+*.ipr
+*.iws
+*.iml
