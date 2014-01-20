@@ -1,5 +1,5 @@
 {
-  "name": "slidr",
+  "name": "jquery.slidr",
   "version": "1.0.0",
   "main": "./app/scripts/jquery.slidr.js",
   "private": true,
