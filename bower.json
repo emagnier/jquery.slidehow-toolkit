@@ -2,7 +2,6 @@
   "name": "jquery.slidr",
   "version": "1.0.0",
   "main": "./app/scripts/jquery.slidr.js",
-  "private": true,
   "dependencies": {
     "modernizr": "~2.6.2",
     "jquery": "~1.10.2",
