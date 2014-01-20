@@ -1,4 +1,11 @@
-slideshow
-=========
+Slidr
+=====
 
-jQuery slideshow plugin
+jQuery Slideshow Plugin.
+
+_More docs comming soon_
+
+
+## Licence
+
+MIT

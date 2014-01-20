@@ -5,9 +5,9 @@
   "ignore": [
     "Gruntfile.js",
     "package.json",
-    "**/*.{txt,html,scss}",
+    "**/*.{txt,html,scss,ico}",
     "app/scripts/main.js",
-    ".*",
+    "app/styles",
     "test"
   ],
   "dependencies": {
