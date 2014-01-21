@@ -12,7 +12,7 @@
                 autoPlay: 'once',
                 autoPlayTimer: 1000,
                 itemsPerGroup: 2,
-                debug: true
+                verbose: true
             };
 
             // Initialize the slideshow
@@ -34,28 +34,28 @@
                 // disable browser scrolling
                 ev.gesture.preventDefault();
 
-                if (options.$container.data('sliding') != true && (ev.type == 'dragright' || ev.type == 'dragleft')) {
+                if (options.$container.data('sliding') !== true && (ev.type === 'dragright' || ev.type === 'dragleft')) {
                     $context.slidr().stop();
                     var left = options.$container.data('currentLeft') + ev.gesture.deltaX;
                     $context.slidr().setContainerOffset({left: left});
                 }
 
-                if (ev.type == 'swipeleft' && $context.data('currentGroupIndex') < $context.data('lastGroupIndex')) {
+                if (ev.type === 'swipeleft' && $context.data('currentGroupIndex') < $context.data('lastGroupIndex')) {
                     $context.slidr().next(true);
                     ev.gesture.stopDetect();
                 }
 
-                if (ev.type == 'swiperight' && $context.data('currentGroupIndex') > 0) {
+                if (ev.type === 'swiperight' && $context.data('currentGroupIndex') > 0) {
                     $context.slidr().prev(true);
                     ev.gesture.stopDetect();
                 }
 
-                if (ev.type == 'release' && ev.gesture.deltaX != 0) {
+                if (ev.type === 'release' && ev.gesture.deltaX !== 0) {
                     $context.slidr().closest(true);
                 }
             }
 
-            options.$container.hammer({ drag_lock_to_axis: true }).on("release swipeleft swiperight dragleft dragright", handleHammer);
+            options.$container.hammer({ 'drag_lock_to_axis': true }).on('release swipeleft swiperight dragleft dragright', handleHammer);
 
         });
 
