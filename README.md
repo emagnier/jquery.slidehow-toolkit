@@ -1,5 +1,5 @@
-Slidr
-=====
+jQuery.slideshow-toolkit
+========================
 
 jQuery Slideshow Plugin.
 

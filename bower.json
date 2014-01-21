@@ -1,13 +1,13 @@
 {
-  "name": "jquery.slidr",
+  "name": "jquery.slideshow-toolkit",
   "version": "1.0.0",
-  "main": "app/scripts/jquery.slidr.js",
+  "main": "src/scripts/jquery.slideshow-toolkit.js",
   "ignore": [
     "Gruntfile.js",
     "package.json",
     "**/*.{txt,html,scss,ico}",
-    "app/scripts/main.js",
-    "app/styles",
+    "src/scripts/main.js",
+    "src/styles",
     "test",
     ".*"
   ],

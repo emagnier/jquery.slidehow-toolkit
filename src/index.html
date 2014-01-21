@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>slidr</title>
+        <title>jQuery Slideshow ToolKit</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -22,31 +22,29 @@
     </head>
     <body>
 
-        <div class="js-slideshow mod-slideshow">
-            <div class="js-slideshow-mask _s-mask">
-                <div class="js-slideshow-slider-wrapper">
+        <div class="slideshow js-slideshow">
+            <div class="slideshow__container js-slideshow-container">
 
-                    <div class="pane1"><h2>Slide 1</h2></div>
-                    <div class="pane2"><h2>Slide 2</h2></div>
-                    <div class="pane3"><h2>Slide 3</h2></div>
-                    <div class="pane4"><h2>Slide 4</h2></div>
-                    <div class="pane5"><h2>Slide 5</h2></div>
+                <div class="slideshow__item"><h2>Slide 1</h2></div>
+                <div class="slideshow__item"><h2>Slide 2</h2></div>
+                <div class="slideshow__item"><h2>Slide 3</h2></div>
+                <div class="slideshow__item"><h2>Slide 4</h2></div>
+                <div class="slideshow__item"><h2>Slide 5</h2></div>
 
-                </div>
             </div>
 
-            <ul class="mod-action">
-                <li><a href="#" onclick="$('.js-slideshow').slidr().play()" >Play</a></li>
-                <li><a href="#" onclick="$('.js-slideshow').slidr().stop()" >Stop</a></li>
-                <li><a href="#" onclick="$('.js-slideshow').slidr().first()" >First</a></li>
-                <li><a href="#" onclick="$('.js-slideshow').slidr().prev()" >Previous</a></li>
-                <li><a href="#" onclick="$('.js-slideshow').slidr().next()" >Next</a></li>
-                <li><a href="#" onclick="$('.js-slideshow').slidr().last()" >Last</a></li>
-                <li><a href="#" onclick="$('.js-slideshow').slidr().closest()" >Closest</a></li>
-                <li><a href="#" onclick="$('.js-slideshow').slidr().reset()" >Reset</a></li>
-            </ul>
-
         </div>
+
+        <ul class="slideshow-actions">
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().play()" >Play</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().stop()" >Stop</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().first()" >First</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().prev()" >Previous</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().next()" >Next</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().last()" >Last</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().closest()" >Closest</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().reset()" >Reset</a></li>
+        </ul>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
@@ -58,9 +56,9 @@
         <!-- endbower -->
         <!-- endbuild -->
 
-        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <!-- build:js({src,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
-        <script src="scripts/jquery.slidr.js"></script>
+        <script src="scripts/jquery.slideshow-toolkit.js"></script>
         <!-- endbuild -->
 </body>
 </html>
