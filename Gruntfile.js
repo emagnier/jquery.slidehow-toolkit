@@ -332,6 +332,25 @@ module.exports = function (grunt) {
             uglify: true
         },
 
+        'notify_hooks': {
+            options: {
+                enabled: true,
+                title: 'jQuery.slideshow-toolkit'
+            }
+        },
+        notify: {
+            server: {
+                options: {
+                    message: 'Server is ready!'
+                }
+            },
+            build: {
+                options: {
+                    message: 'Build Complete!'
+                }
+            }
+        },
+
         // Run some tasks in parallel to speed up build process
         concurrent: {
             server: [
@@ -361,6 +380,7 @@ module.exports = function (grunt) {
             'concurrent:server',
             'autoprefixer',
             'connect:livereload',
+            'notify:server',
             'watch'
         ]);
     });
@@ -397,7 +417,8 @@ module.exports = function (grunt) {
         'modernizr',
         'rev',
         'usemin',
-        'htmlmin'
+        'htmlmin',
+        'notify:build'
     ]);
 
     grunt.registerTask('default', [
