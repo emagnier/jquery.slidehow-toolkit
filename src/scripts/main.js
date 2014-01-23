@@ -3,57 +3,57 @@
 
     $(document).ready(function() {
 
-        $('.js-slideshow').each(function() {
-            var $this = $(this);
+        var $slideshow = $('.js-slideshow');
 
-            var options = {
-                $container: $('.js-slideshow-container', $this),
-                $items: $('.js-slideshow-container > *', $this),
-                autoPlay: 'once',
-                autoPlayTimer: 1000,
-                itemsPerGroup: 2,
-                verbose: true
-            };
+        var options = {
+            $slider: $('.js-slideshow-slider', $slideshow),
+            $items: $('.js-slideshow-slider > *', $slideshow),
+            //autoPlay: 'once',
+            autoPlayTimer: 1000,
+            pauseOnMouseOver: true,
+            itemsPerGroup: 1,
+            throttleItemTransitions: false,
+            verbose: true
+        };
 
-            // Initialize the slideshow
-            $this.slideshow(options);
+        // Initialize the slideshow
+        $slideshow.slideshow(options);
 
-            // Pause the slideshow on mouse hover
-            options.$container.on({
-                'mouseenter touchstart': function() {
-                    $this.slideshow().stop();
-                },
-                'mouseleave touchend': function() {
-                    $this.slideshow().play();
-                }
-            });
+        function handleHammer(ev) {
+            // Disable browser scrolling
+            ev.gesture.preventDefault();
 
-            function handleHammer(ev) {
-                // disable browser scrolling
-                ev.gesture.preventDefault();
-
-                if (options.$container.data('sliding') !== true && (ev.type === 'dragright' || ev.type === 'dragleft')) {
-                    $this.slideshow().stop();
-                    var left = options.$container.data('currentLeft') + ev.gesture.deltaX;
-                    $this.slideshow().setContainerOffset({left: left});
-                }
-
-                if (ev.type === 'swipeleft' && $this.data('currentGroupIndex') < $this.data('lastGroupIndex')) {
-                    $this.slideshow().next(true);
-                    ev.gesture.stopDetect();
-                }
-
-                if (ev.type === 'swiperight' && $this.data('currentGroupIndex') > 0) {
-                    $this.slideshow().prev(true);
-                    ev.gesture.stopDetect();
-                }
-
-                if (ev.type === 'release' && ev.gesture.deltaX !== 0) {
-                    $this.slideshow().closest(true);
-                }
+            if (options.$slider.data('sliding') !== true && (ev.type === 'dragright' || ev.type === 'dragleft')) {
+                $slideshow.slideshow().stop();
+                var left = options.$slider.data('currentLeft') + ev.gesture.deltaX;
+                $slideshow.slideshow().setSliderOffset({left: left});
             }
 
-            options.$container.hammer({ 'drag_lock_to_axis': true }).on('release swipeleft swiperight dragleft dragright', handleHammer);
+            if (ev.type === 'swipeleft' && $slideshow.data('currentGroupIndex') < $slideshow.data('lastGroupIndex')) {
+                $slideshow.slideshow().next();
+                ev.gesture.stopDetect();
+            }
+
+            if (ev.type === 'swiperight' && $slideshow.data('currentGroupIndex') > 0) {
+                $slideshow.slideshow().prev();
+                ev.gesture.stopDetect();
+            }
+
+            if (ev.type === 'release' && ev.gesture.deltaX !== 0) {
+                $slideshow.slideshow().closest();
+            }
+        }
+
+        options.$slider.hammer({ 'drag_lock_to_axis': true }).on('release swipeleft swiperight dragleft dragright', handleHammer);
+
+        $('.js-slideshow-prev').on('click', function(e) {
+            e.preventDefault();
+            $slideshow.slideshow().prev();
+        });
+
+        $('.js-slideshow-next').on('click', function(e) {
+            e.preventDefault();
+            $slideshow.slideshow().next();
         });
 
         // Disable the default anchor behaviour

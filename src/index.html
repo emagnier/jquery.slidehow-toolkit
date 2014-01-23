@@ -23,7 +23,7 @@
     <body>
 
         <div class="slideshow js-slideshow">
-            <div class="slideshow__container js-slideshow-container">
+            <div class="slideshow__container js-slideshow-slider">
 
                 <div class="slideshow__item"><h2>Slide 1</h2></div>
                 <div class="slideshow__item"><h2>Slide 2</h2></div>
@@ -32,24 +32,23 @@
                 <div class="slideshow__item"><h2>Slide 5</h2></div>
 
             </div>
-
         </div>
 
         <ul class="slideshow-actions">
-            <li><a href="#" onclick="$('.js-slideshow').slideshow().play()" >Play</a></li>
-            <li><a href="#" onclick="$('.js-slideshow').slideshow().stop()" >Stop</a></li>
-            <li><a href="#" onclick="$('.js-slideshow').slideshow().first()" >First</a></li>
-            <li><a href="#" onclick="$('.js-slideshow').slideshow().prev()" >Previous</a></li>
-            <li><a href="#" onclick="$('.js-slideshow').slideshow().next()" >Next</a></li>
-            <li><a href="#" onclick="$('.js-slideshow').slideshow().last()" >Last</a></li>
-            <li><a href="#" onclick="$('.js-slideshow').slideshow().closest()" >Closest</a></li>
-            <li><a href="#" onclick="$('.js-slideshow').slideshow().reset()" >Reset</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().play()">Play</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().stop()">Stop</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().first()">First</a></li>
+            <li><a class="js-slideshow-prev" href="#">Previous</a></li>
+            <li><a class="js-slideshow-next" href="#">Next</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().last()">Last</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().closest()">Closest</a></li>
+            <li><a href="#" onclick="$('.js-slideshow').slideshow().detach()">Detach</a></li>
         </ul>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/jquery.js"></script>
-        <script src="bower_components/jquery.animate-enhanced/jquery.animate-enhanced.min.js"></script>
+        <script src="bower_components/jquery.transit/jquery.transit.js"></script>
         <script src="bower_components/jquery.easing/js/jquery.easing.min.js"></script>
         <script src="bower_components/hammerjs/hammer.js"></script>
         <script src="bower_components/jquery-hammerjs/jquery.hammer.js"></script>
